@@ -1,5 +1,5 @@
 let inputCity = document.getElementById('cityChoice');
-let inputCountry = document.getElementById('countryChoice');
+let weather = document.getElementById('weather');
 
 let requestURL = "https://api.openweathermap.org/data/2.5/weather?q=Chimay,be&units=metric&APPID=200f15a460f2b4b6a04aabd17164ddb0";
 
@@ -15,9 +15,12 @@ xhr.onload = function () {
     }
     let response = xhr.response;
     document.getElementById('ville').innerHTML = response.name + ' ' + response.sys.country;
-    document.getElementById('meteo').innerHTML = 'Tempèrature moyenne : ' + Math.round(response.main.temp) + '°c';
-    document.getElementById('tempMin').innerHTML = 'Tempèrature minimum : ' + Math.round(response.main.temp_min) + '°c';
-    document.getElementById('tempMax').innerHTML = 'Tempèrature maximum : ' + Math.round(response.main.temp_max) + '°c';
+    document.getElementById('meteo').innerHTML =Math.round(response.main.temp) + '°c';
+    document.getElementById('tempMin').innerHTML = Math.round(response.main.temp_min) + '°c';
+    document.getElementById('tempMax').innerHTML = Math.round(response.main.temp_max) + '°c';
+    document.getElementById('weather').innerHTML = response.weather[0].main;
+
+    time()
 }
 xhr.send();
 
@@ -28,7 +31,7 @@ xhr.send();
 function choiceVilleAndCountry() {
     i = 0
     if (i === 0) {
-        requestURL = "https://api.openweathermap.org/data/2.5/weather?q=" + inputCity.value + "," + inputCountry.value + "&units=metric&APPID=200f15a460f2b4b6a04aabd17164ddb0";
+        requestURL = "https://api.openweathermap.org/data/2.5/weather?q=" + inputCity.value + ",&units=metric&APPID=200f15a460f2b4b6a04aabd17164ddb0&lang=fr";
         let xhr = new XMLHttpRequest();
         xhr.open("GET", requestURL);
         xhr.responseType = "json";
@@ -42,17 +45,18 @@ function choiceVilleAndCountry() {
             let response = xhr.response;
             console.log(response);
             document.getElementById('ville').innerHTML = response.name + ' ' + response.sys.country;
-            document.getElementById('meteo').innerHTML = 'Tempèrature moyenne : ' + response.main.temp + '°c';
+            document.getElementById('meteo').innerHTML =Math.round(response.main.temp) + '°c';
+            document.getElementById('tempMin').innerHTML = Math.round(response.main.temp_min) + '°c';
+            document.getElementById('tempMax').innerHTML = Math.round(response.main.temp_max) + '°c';
+            document.getElementById('weather').innerHTML = response.weather[0].main;
+            document.getElementById('vent').innerHTML = (Math.round.wind.speed * 3.6);
+            time()
+
         }
         xhr.send();
 
-
-
         if (inputCity.value === '') {
             alert('entrez un nom de ville');
-        }
-        if (inputCountry.value === '') {
-            alert('entrez un nom de pays ! Exemples : be, fr, uk, etc');
         }
     }
 
@@ -62,3 +66,68 @@ document.getElementById('send').addEventListener("click", () => {
     choiceVilleAndCountry()
     console.log(requestURL)
 })
+
+
+function time() {
+    if (weather.innerHTML === 'Snow') {
+        document.getElementById('image').style.backgroundImage = 'url(/assets/img/13d@2x.png)';
+        document.getElementById('image').style.backgroundRepeat = 'no-repeat';
+        document.getElementById('weather').innerHTML = 'Il neige, attrape pas froid !';
+    }
+    if (weather.innerHTML === 'Clouds') {
+        document.getElementById('image').style.backgroundImage = 'url(/assets/img/02d@2x.png)';
+        document.getElementById('image').style.backgroundRepeat = 'no-repeat';
+        document.getElementById('weather').innerHTML = 'Il y a des nuages !';
+    }
+    if (weather.innerHTML === 'Clear') {
+        document.getElementById('image').style.backgroundImage = 'url(/assets/img/01d@2x.png)';
+        document.getElementById('image').style.backgroundRepeat = 'no-repeat';
+        document.getElementById('weather').innerHTML = 'Ciel dégagé, regarde comme il fait beau !';
+    }
+    if (weather.innerHTML === 'Rain') {
+        document.getElementById('image').style.backgroundImage = 'url(/assets/img/10d@2x.png)';
+        document.getElementById('image').style.backgroundRepeat = 'no-repeat';
+        document.getElementById('weather').innerHTML = 'Il pleut ça mouille !';
+    }
+    if (weather.innerHTML === 'Thunderstorm') {
+        document.getElementById('image').style.backgroundImage = 'url(/assets/img/11d@2x.png)';
+        document.getElementById('image').style.backgroundRepeat = 'no-repeat';
+        document.getElementById('weather').innerHTML = 'saperlipopette il tonne !';
+    }
+    if (weather.innerHTML === 'Mist') {
+        document.getElementById('image').style.backgroundImage = 'url(/assets/img/50d@2x.png)';
+        document.getElementById('image').style.backgroundRepeat = 'no-repeat';
+    }
+    if (weather.innerHTML === 'Smoke') {
+        document.getElementById('image').style.backgroundImage = 'url(/assets/img/50d@2x.png)';
+        document.getElementById('image').style.backgroundRepeat = 'no-repeat';
+    }
+    if (weather.innerHTML === 'Haze') {
+        document.getElementById('image').style.backgroundImage = 'url(/assets/img/50d@2x.png)';
+        document.getElementById('image').style.backgroundRepeat = 'no-repeat';
+    }
+    if (weather.innerHTML === 'Dust') {
+        document.getElementById('image').style.backgroundImage = 'url(/assets/img/50d@2x.png)';
+        document.getElementById('image').style.backgroundRepeat = 'no-repeat';
+    }
+    if (weather.innerHTML === 'Fog') {
+        document.getElementById('image').style.backgroundImage = 'url(/assets/img/50d@2x.png)';
+        document.getElementById('image').style.backgroundRepeat = 'no-repeat';
+    }
+    if (weather.innerHTML === 'sand') {
+        document.getElementById('image').style.backgroundImage = 'url(/assets/img/50d@2x.png)';
+        document.getElementById('image').style.backgroundRepeat = 'no-repeat';
+    }
+    if (weather.innerHTML === 'Ash') {
+        document.getElementById('image').style.backgroundImage = 'url(/assets/img/50d@2x.png)';
+        document.getElementById('image').style.backgroundRepeat = 'no-repeat';
+    }
+    if (weather.innerHTML === 'Squall') {
+        document.getElementById('image').style.backgroundImage = 'url(/assets/img/50d@2x.png)';
+        document.getElementById('image').style.backgroundRepeat = 'no-repeat';
+    }
+    if (weather.innerHTML === 'Tornado') {
+        document.getElementById('image').style.backgroundImage = 'url(/assets/img/50d@2x.png)';
+        document.getElementById('image').style.backgroundRepeat = 'no-repeat';
+    }
+}
