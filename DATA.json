@@ -1,43 +1,46 @@
 {
   "coord": {
-    "lon": -0.1257,
-    "lat": 51.5085
+    "lon": 4.3171,
+    "lat": 50.0486
   },
   "weather": [
     {
-      "id": 741,
-      "main": "Fog",
-      "description": "fog",
-      "icon": "50d"
+      "id": 801,
+      "main": "Clouds",
+      "description": "few clouds",
+      "icon": "02d"
     }
   ],
   "base": "stations",
   "main": {
-    "temp": 280.97,
-    "feels_like": 277.96,
-    "temp_min": 277.97,
-    "temp_max": 282.76,
-    "pressure": 1041,
-    "humidity": 90
+    "temp": 279.41,
+    "feels_like": 277.12,
+    "temp_min": 275.01,
+    "temp_max": 280.93,
+    "pressure": 1039,
+    "humidity": 98,
+    "sea_level": 1039,
+    "grnd_level": 1010
   },
-  "visibility": 550,
+  "visibility": 10000,
   "wind": {
-    "speed": 5.14,
-    "deg": 80
+    "speed": 3.07,
+    "deg": 58,
+    "gust": 7.64
   },
   "clouds": {
-    "all": 90
+    "all": 16
   },
-  "dt": 1639733760,
+  "dt": 1639734253,
   "sys": {
     "type": 2,
-    "id": 2019646,
-    "country": "GB",
-    "sunrise": 1639728087,
-    "sunset": 1639756317
+    "id": 2035195,
+    "country": "BE",
+    "sunrise": 1639726594,
+    "sunset": 1639755677
   },
-  "timezone": 0,
-  "id": 2643743,
-  "name": "London",
+  "timezone": 3600,
+  "id": 2800325,
+  "name": "Chimay",
   "cod": 200
 }
