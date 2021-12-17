@@ -9,14 +9,15 @@ xhr.responseType = "json";
 xhr.onload = function () {
     if (xhr.status === 200) {
         console.log('Status : OK');
-    }
-    else if (xhr.status !== 200) {
-        alert('Une erreur est survenue : ' +'erreur ' + xhr.status);
+    } else if (xhr.status !== 200) {
+        alert('Une erreur est survenue : ' + 'erreur ' + xhr.status);
         return;
     }
     let response = xhr.response;
     document.getElementById('ville').innerHTML = response.name + ' ' + response.sys.country;
-    document.getElementById('meteo').innerHTML = response.main.temp + '°c';
+    document.getElementById('meteo').innerHTML = 'Tempèrature moyenne : ' + Math.round(response.main.temp) + '°c';
+    document.getElementById('tempMin').innerHTML = 'Tempèrature minimum : ' + Math.round(response.main.temp_min) + '°c';
+    document.getElementById('tempMax').innerHTML = 'Tempèrature maximum : ' + Math.round(response.main.temp_max) + '°c';
 }
 xhr.send();
 
@@ -39,11 +40,13 @@ function choiceVilleAndCountry() {
                 return;
             }
             let response = xhr.response;
-            console.log(response.main.temp_min);
+            console.log(response);
             document.getElementById('ville').innerHTML = response.name + ' ' + response.sys.country;
-            document.getElementById('meteo').innerHTML = response.main.temp + '°c';
+            document.getElementById('meteo').innerHTML = 'Tempèrature moyenne : ' + response.main.temp + '°c';
         }
         xhr.send();
+
+
 
         if (inputCity.value === '') {
             alert('entrez un nom de ville');
@@ -59,5 +62,3 @@ document.getElementById('send').addEventListener("click", () => {
     choiceVilleAndCountry()
     console.log(requestURL)
 })
-
-
