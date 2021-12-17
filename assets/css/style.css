@@ -6,11 +6,16 @@
 
 body {
     width: 100vh;
+    height: 100vh;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
 }
 
-#appli
+#appli {
+    width: 40%;
+    height: 30%;
+    border: ridge 4px #00c4ff;
+}
 
