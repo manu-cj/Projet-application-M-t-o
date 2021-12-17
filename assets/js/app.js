@@ -21,11 +21,6 @@ xhr.onload = function () {
 }
 xhr.send();
 
-
-
-
-
-
 /**
  *
  function to choose city and country
