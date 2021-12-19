@@ -1,7 +1,7 @@
 let inputCity = document.getElementById('cityChoice');
 let weather = document.getElementById('weather');
 
-let requestURL = "https://api.openweathermap.org/data/2.5/weather?q=Chimay,be&units=metric&APPID=200f15a460f2b4b6a04aabd17164ddb0";
+let requestURL = "https://api.openweathermap.org/data/2.5/weather?q=Chimay,be&units=metric&APPID=200f15a460f2b4b6a04aabd17164ddb0&lang=fr";
 
 let xhr = new XMLHttpRequest();
 xhr.open("GET", requestURL);
@@ -19,8 +19,11 @@ xhr.onload = function () {
     document.getElementById('tempMin').innerHTML = Math.round(response.main.temp_min) + '°c';
     document.getElementById('tempMax').innerHTML = Math.round(response.main.temp_max) + '°c';
     document.getElementById('weather').innerHTML = response.weather[0].main;
+    time();
+    document.getElementById('vent').innerHTML =  Math.round(response.wind.speed * 3.6) + ' km/h';
+    document.getElementById('humiditer').innerHTML =  response.main.humidity + '%';
+    console.log(response);
 
-    time()
 }
 xhr.send();
 
@@ -31,7 +34,7 @@ xhr.send();
 function choiceVilleAndCountry() {
     i = 0
     if (i === 0) {
-        requestURL = "https://api.openweathermap.org/data/2.5/weather?q=" + inputCity.value + ",&units=metric&APPID=200f15a460f2b4b6a04aabd17164ddb0&lang=fr";
+        requestURL = "https://api.openweathermap.org/data/2.5/weather?q=" + inputCity.value + ",&units=metric&APPID=200f15a460f2b4b6a04aabd17164ddb0";
         let xhr = new XMLHttpRequest();
         xhr.open("GET", requestURL);
         xhr.responseType = "json";
@@ -49,8 +52,11 @@ function choiceVilleAndCountry() {
             document.getElementById('tempMin').innerHTML = Math.round(response.main.temp_min) + '°c';
             document.getElementById('tempMax').innerHTML = Math.round(response.main.temp_max) + '°c';
             document.getElementById('weather').innerHTML = response.weather[0].main;
-            document.getElementById('vent').innerHTML = (Math.round.wind.speed * 3.6);
-            time()
+            time();
+            document.getElementById('vent').innerHTML =  Math.round(response.wind.speed * 3.6);
+            document.getElementById('humiditer').innerHTML =  response.main.humidity + '%';
+
+
 
         }
         xhr.send();

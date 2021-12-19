@@ -80,10 +80,15 @@ body {
     width: 25%;
     height: 100%;
     border: solid 3px #ff0000;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
 }
 
 #humiditer {
     width: 25%;
     height: 100%;
     border: solid 3px #cb1414;
+    text-align: center;
 }
