@@ -160,6 +160,11 @@ i{
     color: #d7f5ff;
 }
 
+#weather {
+    text-align: center;
+    font-size: 1.5em;
+}
+
 
 
 @media screen and (min-width: 320px) {
