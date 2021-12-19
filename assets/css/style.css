@@ -16,25 +16,30 @@ body {
 #appli {
     width: 40%;
     height: 80%;
-    border: ridge 4px #00c4ff;
     display: flex;
     flex-direction: column;
     justify-content: space-around;
     align-items: center;
     align-content: space-around;
     background-color: #2fa8d3;
+    backdrop-filter: blur(16px) saturate(180%);
+    -webkit-backdrop-filter: blur(16px) saturate(180%);
+    background-color: rgba(0, 177, 255, 0.75);
+    border-radius: 20px;
+    border: 10px ridge rgb(255, 255, 255);
+    color: #d7f5ff;
 }
 
 #temp {
     width: 100%;
-    height: 15%;
-    border: solid 3px blueviolet;
+    height: 25%;
     display: flex;
     flex-direction: row;
     justify-content: center;
     align-items: center;
 }
 #min {
+    margin-right: 5px;
     width: 33%;
     height: 100%;
     display: flex;
@@ -42,53 +47,126 @@ body {
     justify-content: space-evenly;
     align-items: center;
     align-content: space-between;
+    backdrop-filter: blur(16px) saturate(180%);
+    -webkit-backdrop-filter: blur(16px) saturate(180%);
+    background-color: rgba(0, 177, 255, 0.75);
+    border-radius: 12px;
+    border: 1px solid rgb(255, 255, 255);
+    color: #d7f5ff;
 }
 
 #moyenne {
+    margin-right: 5px;
     width: 33%;
     height: 100%;
     display: flex;
     flex-direction: column;
     justify-content: space-evenly;
     align-items: center;
-    align-content: center;
+    backdrop-filter: blur(16px) saturate(180%);
+    -webkit-backdrop-filter: blur(16px) saturate(180%);
+    background-color: rgba(0, 177, 255, 0.75);
+    border-radius: 12px;
+    border: 1px solid rgb(255, 255, 255);
+    color: #d7f5ff;
 }
 
 #max {
+    margin-right: 5px;
     width: 33%;
     height: 100%;
     display: flex;
     flex-direction: column;
     justify-content: space-evenly;
     align-items: center;
-    align-content: center;
+    backdrop-filter: blur(16px) saturate(180%);
+    -webkit-backdrop-filter: blur(16px) saturate(180%);
+    background-color: rgba(0, 177, 255, 0.75);
+    border-radius: 12px;
+    border: 1px solid rgb(255, 255, 255);
+    color: #d7f5ff;
 }
-#image {
-    width: 20%;
-    height: 20%;
-}
-#autre {
+
+#lesImages {
     width: 100%;
-    height: 15%;
-    border: solid 3px blueviolet;
+    height: 40%;
     display: flex;
     flex-direction: row;
     justify-content: space-evenly;
+    align-items: center;
+    backdrop-filter: blur(16px) saturate(180%);
+    -webkit-backdrop-filter: blur(16px) saturate(180%);
+    background-color: rgba(0, 177, 255, 0.75);
+    border-radius: 12px;
+    border: 1px solid rgb(255, 255, 255);
+    color: #d7f5ff;
+
+}
+
+i{
+    font-size: 3em;
+    margin-bottom: 50px;
+    color: white;
+}
+
+#image {
+    margin-top: 50px;
+    width: 30%;
+    height: 50%;
+}
+
+#autre {
+    width: 100%;
+    height: 15%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-items: center;
+    backdrop-filter: blur(16px) saturate(180%);
+    -webkit-backdrop-filter: blur(16px) saturate(180%);
+    background-color: rgba(0, 177, 255, 0.75);
+    border-radius: 12px;
+    border: 1px solid rgb(255, 255, 255);
+    color: #d7f5ff;
 }
 
 #vent {
     width: 25%;
     height: 100%;
-    border: solid 3px #ff0000;
-    text-align: center;
     display: flex;
     flex-direction: column;
     justify-content: space-evenly;
+    align-items: center;
+    backdrop-filter: blur(16px) saturate(180%);
+    -webkit-backdrop-filter: blur(16px) saturate(180%);
+    background-color: rgba(0, 177, 255, 0.75);
+    border-radius: 12px;
+    border: 1px solid rgb(255, 255, 255);
+    color: #d7f5ff;
 }
 
 #humiditer {
     width: 25%;
     height: 100%;
-    border: solid 3px #cb1414;
-    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+    backdrop-filter: blur(16px) saturate(180%);
+    -webkit-backdrop-filter: blur(16px) saturate(180%);
+    background-color: rgba(0, 177, 255, 0.75);
+    border-radius: 12px;
+    border: 1px solid rgb(255, 255, 255);
+    color: #d7f5ff;
+}
+
+
+
+@media screen and (min-width: 320px) {
+    #appli {
+        width: 80%;
+    }
+    #image {
+        width: 50%;
+    }
 }

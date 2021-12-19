@@ -20,10 +20,8 @@ xhr.onload = function () {
     document.getElementById('tempMax').innerHTML = Math.round(response.main.temp_max) + '°c';
     document.getElementById('weather').innerHTML = response.weather[0].main;
     time();
-    document.getElementById('vent').innerHTML =  Math.round(response.wind.speed * 3.6) + ' km/h';
-    document.getElementById('humiditer').innerHTML =  response.main.humidity + '%';
-    console.log(response);
-
+    document.getElementById('valeurVent').innerHTML =  Math.round(response.wind.speed * 3.6) + ' km/h';
+    document.getElementById('valeurHumiditer').innerHTML =  response.main.humidity + '%';
 }
 xhr.send();
 
@@ -46,18 +44,14 @@ function choiceVilleAndCountry() {
                 return;
             }
             let response = xhr.response;
-            console.log(response);
             document.getElementById('ville').innerHTML = response.name + ' ' + response.sys.country;
             document.getElementById('meteo').innerHTML =Math.round(response.main.temp) + '°c';
             document.getElementById('tempMin').innerHTML = Math.round(response.main.temp_min) + '°c';
             document.getElementById('tempMax').innerHTML = Math.round(response.main.temp_max) + '°c';
             document.getElementById('weather').innerHTML = response.weather[0].main;
             time();
-            document.getElementById('vent').innerHTML =  Math.round(response.wind.speed * 3.6);
-            document.getElementById('humiditer').innerHTML =  response.main.humidity + '%';
-
-
-
+            document.getElementById('valeurVent').innerHTML =  Math.round(response.wind.speed * 3.6) + ' km/h';
+            document.getElementById('valeurHumiditer').innerHTML =  response.main.humidity + '%';
         }
         xhr.send();
 
@@ -73,6 +67,22 @@ document.getElementById('send').addEventListener("click", () => {
     console.log(requestURL)
 })
 
+function animateCloud() {
+    document.getElementById('nuage1').style.transform = 'translateX(50px)';
+    document.getElementById('nuage2').style.transform = 'translateX(-50px)';
+}
+function animateCloudStop() {
+    document.getElementById('nuage1').style.transform = 'translateX(0)';
+    document.getElementById('nuage2').style.transform = 'translateX(0)';
+}
+
+
+document.getElementById('lesImages').addEventListener("mouseover", () => {
+    animateCloud()
+})
+document.getElementById('lesImages').addEventListener("mouseleave", () => {
+    animateCloudStop()
+})
 
 function time() {
     if (weather.innerHTML === 'Snow') {
