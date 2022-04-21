@@ -15,13 +15,13 @@ xhr.onload = function () {
     }
     let response = xhr.response;
     document.getElementById('ville').innerHTML = response.name + ' ' + response.sys.country;
-    document.getElementById('meteo').innerHTML =Math.round(response.main.temp) + '°c';
+    document.getElementById('meteo').innerHTML = Math.round(response.main.temp) + '°c';
     document.getElementById('tempMin').innerHTML = Math.round(response.main.temp_min) + '°c';
     document.getElementById('tempMax').innerHTML = Math.round(response.main.temp_max) + '°c';
     document.getElementById('weather').innerHTML = response.weather[0].main;
     time();
-    document.getElementById('valeurVent').innerHTML =  Math.round(response.wind.speed * 3.6) + ' km/h';
-    document.getElementById('valeurHumiditer').innerHTML =  response.main.humidity + '%';
+    document.getElementById('valeurVent').innerHTML = Math.round(response.wind.speed * 3.6) + ' km/h';
+    document.getElementById('valeurHumiditer').innerHTML = response.main.humidity + '%';
 }
 xhr.send();
 
@@ -45,13 +45,13 @@ function choiceVilleAndCountry() {
             }
             let response = xhr.response;
             document.getElementById('ville').innerHTML = response.name + ' ' + response.sys.country;
-            document.getElementById('meteo').innerHTML =Math.round(response.main.temp) + '°c';
+            document.getElementById('meteo').innerHTML = Math.round(response.main.temp) + '°c';
             document.getElementById('tempMin').innerHTML = Math.round(response.main.temp_min) + '°c';
             document.getElementById('tempMax').innerHTML = Math.round(response.main.temp_max) + '°c';
             document.getElementById('weather').innerHTML = response.weather[0].main;
             time();
-            document.getElementById('valeurVent').innerHTML =  Math.round(response.wind.speed * 3.6) + ' km/h';
-            document.getElementById('valeurHumiditer').innerHTML =  response.main.humidity + '%';
+            document.getElementById('valeurVent').innerHTML = Math.round(response.wind.speed * 3.6) + ' km/h';
+            document.getElementById('valeurHumiditer').innerHTML = response.main.humidity + '%';
         }
         xhr.send();
 
@@ -71,6 +71,7 @@ function animateCloud() {
     document.getElementById('nuage1').style.transform = 'translateX(50px)';
     document.getElementById('nuage2').style.transform = 'translateX(-50px)';
 }
+
 function animateCloudStop() {
     document.getElementById('nuage1').style.transform = 'translateX(0)';
     document.getElementById('nuage2').style.transform = 'translateX(0)';
@@ -85,65 +86,29 @@ document.getElementById('lesImages').addEventListener("mouseleave", () => {
 })
 
 function time() {
-    if (weather.innerHTML === 'Snow') {
-        document.getElementById('image').style.backgroundImage = 'url(/assets/img/13d@2x.png)';
+    changeMeteo('Snow', 'url(/assets/img/13d@2x.png)', 'Il neige, attrape pas froid !');
+    changeMeteo('Clouds', 'url(/assets/img/02d@2x.png)', 'Il y a des nuages !');
+    changeMeteo('Clear', 'url(/assets/img/01d@2x.png)', 'Ciel dégagé, regarde comme il fait beau !');
+    changeMeteo('Rain', 'url(/assets/img/10d@2x.png)',  'Il pleut ça mouille !');
+    changeMeteo('Thunderstorm', 'url(/assets/img/11d@2x.png)', 'saperlipopette il tonne');
+    changeMeteo('Mist', 'url(/assets/img/50d@2x.png)', 'ouvre les yeux y a du brouillard !');
+    changeMeteo('Smoke', 'url(/assets/img/50d@2x.png)', 'Ouvre les yeux il y a du brouillard !');
+    changeMeteo('Haze', 'url(/assets/img/50d@2x.png)', 'Ouvre les yeux il y a du brouillard !');
+    changeMeteo('Dust', 'url(/assets/img/50d@2x.png)', 'il y a de la poussière !');
+    changeMeteo('Fog', 'url(/assets/img/50d@2x.png)', 'Ouvre les yeux il y a du brouillard !');
+    changeMeteo('sand', 'url(/assets/img/50d@2x.png)', 'Tempète de sable oulala !');
+    changeMeteo('Ash', 'url(/assets/img/50d@2x.png)', 'te brule pas y a des cendre dans l\'air');
+    changeMeteo('Squall', 'url(/assets/img/50d@2x.png)', 'Il y a des bourrasque !');
+    changeMeteo('Tornado', 'url(/assets/img/50d@2x.png)', 'Cache toi, il y a une tornade !');
+}
+
+
+
+function changeMeteo(globalWeather, url, message) {
+    if (weather.innerHTML === globalWeather) {
+        document.getElementById('image').style.backgroundImage = url;
         document.getElementById('image').style.backgroundRepeat = 'no-repeat';
-        document.getElementById('weather').innerHTML = 'Il neige, attrape pas froid !';
-    }
-    if (weather.innerHTML === 'Clouds') {
-        document.getElementById('image').style.backgroundImage = 'url(/assets/img/02d@2x.png)';
-        document.getElementById('image').style.backgroundRepeat = 'no-repeat';
-        document.getElementById('weather').innerHTML = 'Il y a des nuages !';
-    }
-    if (weather.innerHTML === 'Clear') {
-        document.getElementById('image').style.backgroundImage = 'url(/assets/img/01d@2x.png)';
-        document.getElementById('image').style.backgroundRepeat = 'no-repeat';
-        document.getElementById('weather').innerHTML = 'Ciel dégagé, regarde comme il fait beau !';
-    }
-    if (weather.innerHTML === 'Rain') {
-        document.getElementById('image').style.backgroundImage = 'url(/assets/img/10d@2x.png)';
-        document.getElementById('image').style.backgroundRepeat = 'no-repeat';
-        document.getElementById('weather').innerHTML = 'Il pleut ça mouille !';
-    }
-    if (weather.innerHTML === 'Thunderstorm') {
-        document.getElementById('image').style.backgroundImage = 'url(/assets/img/11d@2x.png)';
-        document.getElementById('image').style.backgroundRepeat = 'no-repeat';
-        document.getElementById('weather').innerHTML = 'saperlipopette il tonne !';
-    }
-    if (weather.innerHTML === 'Mist') {
-        document.getElementById('image').style.backgroundImage = 'url(/assets/img/50d@2x.png)';
-        document.getElementById('image').style.backgroundRepeat = 'no-repeat';
-    }
-    if (weather.innerHTML === 'Smoke') {
-        document.getElementById('image').style.backgroundImage = 'url(/assets/img/50d@2x.png)';
-        document.getElementById('image').style.backgroundRepeat = 'no-repeat';
-    }
-    if (weather.innerHTML === 'Haze') {
-        document.getElementById('image').style.backgroundImage = 'url(/assets/img/50d@2x.png)';
-        document.getElementById('image').style.backgroundRepeat = 'no-repeat';
-    }
-    if (weather.innerHTML === 'Dust') {
-        document.getElementById('image').style.backgroundImage = 'url(/assets/img/50d@2x.png)';
-        document.getElementById('image').style.backgroundRepeat = 'no-repeat';
-    }
-    if (weather.innerHTML === 'Fog') {
-        document.getElementById('image').style.backgroundImage = 'url(/assets/img/50d@2x.png)';
-        document.getElementById('image').style.backgroundRepeat = 'no-repeat';
-    }
-    if (weather.innerHTML === 'sand') {
-        document.getElementById('image').style.backgroundImage = 'url(/assets/img/50d@2x.png)';
-        document.getElementById('image').style.backgroundRepeat = 'no-repeat';
-    }
-    if (weather.innerHTML === 'Ash') {
-        document.getElementById('image').style.backgroundImage = 'url(/assets/img/50d@2x.png)';
-        document.getElementById('image').style.backgroundRepeat = 'no-repeat';
-    }
-    if (weather.innerHTML === 'Squall') {
-        document.getElementById('image').style.backgroundImage = 'url(/assets/img/50d@2x.png)';
-        document.getElementById('image').style.backgroundRepeat = 'no-repeat';
-    }
-    if (weather.innerHTML === 'Tornado') {
-        document.getElementById('image').style.backgroundImage = 'url(/assets/img/50d@2x.png)';
-        document.getElementById('image').style.backgroundRepeat = 'no-repeat';
+        document.getElementById('weather').innerHTML = message;
     }
 }
+
